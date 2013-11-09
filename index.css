@@ -7,6 +7,7 @@ a {
 }
 /* Asset */
 .plus{
+    color:#999;
     font-size:20px;
     padding:5px;
 }
@@ -26,14 +27,30 @@ a {
     margin-left: -225px;
     width:225px;
     border-right: 1px solid #ddd;
+    background-color:#2B3238;
 }
 
 /* topic Item Styles */
 .topic-item {
     padding: 0.6em 0.5em;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #394048;
     border-left: 6px solid transparent;
     cursor:pointer;
+}
+.topic-item:hover {
+    background-color: #272d33;
+}
+.topic-item-selected {
+    background-color: #20262a;
+    border-top: 1px solid #171c1f;
+    border-bottom: 1px solid #171c1f;
+}
+.topic-item-selected:hover {
+     background-color: #20262a;
+}
+
+.topic-item-unread {
+    border-left: 6px solid #02a3c6;
 }
     .topic-avatar {
         border-radius: 3px;
@@ -45,20 +62,12 @@ a {
     }
     .topic-name {
         text-transform: uppercase;
-        color: #999;
+        color: #EEE;
     }
     .topic-desc {
         font-size: 80%;
         margin: 0.4em 0;
     }
-
-.topic-item-selected {
-    background: #eee;
-    cursor:default;
-}
-.topic-item-unread {
-    border-left: 6px solid #02a3c6;
-}
 
 .text-info{color:#1FAEC4;}
 .text-success{color:#3cd847;}
