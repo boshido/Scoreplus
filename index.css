@@ -1,17 +1,68 @@
-body {
+body,html {
     color: #333;
+    height:100%;
+    width:100%;
 }
 a {
     text-decoration: none;
     color: #1b98f8;
 }
 /* Asset */
+.float-left{
+    float:left;
+}
+
+.add-student,.print-qr,.delete-class{
+    text-align: center;
+    width:100px;
+    cursor:pointer;
+    float:right;
+}
+.add-student:hover ,.print-qr:hover,.delete-class:hover{
+    color:#1FAEC4;
+}
+
+.add-student .icon{
+    background-position: 0 0;
+    background-image: url("/icons_toolbar.png");
+}
+.print-qr .icon{
+    background-position: -20px 0;
+    background-image: url("/icons_toolbar.png");
+}
+.delete-class .icon{
+    background-position: -100px 0;
+    background-image: url("/icons_toolbar.png");
+}
+
+.icon{
+    height: 18px;
+    width: 20px;
+    background-repeat: no-repeat;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 35px;
+}
+
+
 .plus{
     color:#999;
     font-size:20px;
     padding:5px;
 }
+
 .circular {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, .8);
+    margin-right:10px;
+}
+.circular-mini {
     width: 30px;
     height: 30px;
     border-radius: 15px;
@@ -26,6 +77,7 @@ a {
 #layout {
     padding-left:225px; /* "left col (nav + list)" width */
     position: relative;
+    height:100%;
 }
 
 #list {
@@ -40,42 +92,45 @@ a {
     border-right: 1px solid #ddd;
     background-color:#2B3238;
 }
-
+#main{
+   height:100%;
+}
 /* topic Item Styles */
-.topic-item {
+.class-item {
+    /*border-left: 6px solid transparent;*/
     padding: 0.7em 0.5em 0.6em 0.5em;
     border-bottom: 1px solid #394048;
-    border-left: 6px solid transparent;
     cursor:pointer;
 }
-.topic-item:hover {
+.class-item:hover {
     background-color: #272d33;
 }
-.topic-item-selected {
+.class-item-selected {
     background-color: #20262a;
     border-top: 1px solid #171c1f;
     border-bottom: 1px solid #171c1f;
 }
-.topic-item-selected:hover {
+.class-item-selected:hover {
      background-color: #20262a;
 }
 
-.topic-item-unread {
+.class-item-unread {
     border-left: 6px solid #02a3c6;
 }
-    .topic-avatar {
+    .class-avatar {
         border-radius: 3px;
         margin-right: 0.5em;
     }
-    .topic-name,
-    .topic-subject {
+    .class-name {
         margin: 0;
-    }
-    .topic-name {
         text-transform: uppercase;
         color: #EEE;
     }
-    .topic-desc {
+    .class-subject {
+        margin: 0;
+        font-weight:normal;
+    }
+    .class-desc {
         font-size: 80%;
         margin: 0.4em 0;
     }
@@ -86,32 +141,100 @@ a {
 .text-alert{color:#ef2b15;}
 
 /* topic Content Styles */
-.topic-content-header, .topic-content-body, .topic-content-footer {
+.class-content{
+    position:relative;
+    height:100%;
+}
+.class-content-header,.class-content-body, .class-content-footer {
+
     padding: 1em 2em;
 }
-    .topic-content-header {
+    .class-content-header {
+
         border-bottom: 1px solid #ddd;
     }
+        .class-content-review{
 
-        .topic-content-title {
-            margin: 0.5em 0 0;
         }
-        .topic-content-subtitle {
-            font-size: 1em;
-            margin: 0;
-            font-weight: normal;
-        }
-    .topic-content-controls {
-        margin-top: 2em;
+            .class-content-title {
+                margin: 0.5em 0 0;
+            }
+            .class-content-subtitle {
+                margin: 0;
+                font-weight: normal;
+            }
+    .class-content-controls {
+        /*margin-top: 2em;*/
         text-align: right;
     }
-        .topic-content-controls .secondary-button {
+        .class-content-controls .secondary-button {
             margin-bottom: 0.3em;
         }
+    .class-content-body{
 
-.pure-form legend{
-    font-size:115%;
-}
+        background-color:#DDD;
+        display: block;
+        position:absolute;
+        height:auto;
+        bottom:0;
+        top:0;
+        left:0;
+        right:0;
+        margin-top:89px;
+        overflow:auto;
+    }
+        .thumbnailContainer{
+            position:absolute;
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            transition: all .3s ease;
+            border: 5px solid transparent;
+        }
+            .thumbnail{
+                height: 190px;
+                width: 198px;
+                max-height: 190px;
+                background-color: white;
+                cursor: pointer;
+                -moz-box-shadow: 0 1px 2px #c3c3c3;
+                -webkit-box-shadow: 0 1px 2px #c3c3c3;
+                box-shadow: 0 1px 2px #c3c3c3;
+            }
+                .imageContainer{
+                    background-color: white;
+                    background-position: 50% 50%;
+                    background-repeat: no-repeat no-repeat;
+                    height: 150px;
+                    max-height: 150px;
+                    z-index: 2;
+                    position: absolute;
+                    -moz-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.08);
+                    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.08);
+                    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.08);
+                    -webkit-transition: all .3s ease;
+                    -moz-transition: all .3s ease;
+                    transition: all .3s ease;
+                }
+                .describe{
+                    height: 40px;
+                    position: absolute;
+                    bottom: 0;
+                    background-color: white;
+                    width: 100%;
+                }
+                    .describeTitle{
+                        margin-top: 13px;
+                        margin-bottom: -2px;
+                        margin-left: 10px;
+                        font-size: 11px;
+                        font-weight: 600;
+                        color: #333;
+                        font-family: 'Whitney SSm A','Whitney SSm B',sans-serif;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        width: 89%;
+                    }
 
 /* Button CSS */
 .pure-button-primary,
@@ -203,7 +326,7 @@ a {
         margin: 0;
         padding: 0;
     }
-    .topic-avatar {
+    .class-avatar {
         width: 40px;
         height: 40px;
     }
